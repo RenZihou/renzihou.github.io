@@ -1,22 +1,17 @@
-primary_name: "Zihou Ren"
-secondary_name: ""
-navbar_name: "Zihou Ren"
-
-# Optional profile fields stay empty until you add your own information.
-positions: []
-email:
-cv_link:
-gscholar:
-github:
-twitter:
-linkedin:
-orcid:
-
-short_bio_text_justify: false
-short_bio:
-portrait_url:
-portrait_caption:
-
-education: []
-experience: []
-awards: []
+name: Zihou Ren
+chinese_name: 任自厚
+role: Ph.D. student in Cyberspace Security
+institution: Tsinghua University
+department: Institute for Network Sciences and Cyberspace
+email: renzihou2012@163.com
+github: https://github.com/renzihou
+cv: /assets/files/zihou-ren-cv.pdf
+cv_zh: /assets/files/zihou-ren-cv-zh.pdf
+intro: I study how to make systems more secure, observable, and efficient.
+bio: >-
+  I'm a Ph.D. student at Tsinghua University, working with Associate Professor
+  Long Wang in the Network and System Reliability and Security Lab.
+  My research spans systems security, container isolation, and kernel performance.
+current: >-
+  Recently, I've been exploring security isolation for AI agents:
+  defining task-specific boundaries for the assets an agent may access.

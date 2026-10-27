@@ -1,0 +1,29 @@
+- title: Security isolation for AI agents
+  topic: Agent security
+  status: Ongoing
+  description: Defining task-specific boundaries around the assets an AI agent can access, bringing systems isolation principles to agent workflows.
+- title: CAGEGuard
+  subtitle: "No Touching Others' Assets: Detecting Container Escapes via CAGEGuard"
+  topic: Container security · eBPF
+  authors: Z. Ren et al.
+  status: Submitted to USENIX Security
+  description: Modeling container boundaries through asset ownership and detecting escapes with eBPF. Achieved a 90% detection rate with low false positives and overhead.
+- title: RootSeeker
+  subtitle: "Evidence-Guided Root Cause Analysis for Container Escapes"
+  topic: Container security · Root cause analysis
+  authors: Z. Ren et al.
+  status: Submitted to Journal of Software
+  description: Combining self-correction with agent-oriented log and code search to locate the source of container escapes. Achieved 48% end-to-end function-level accuracy.
+- title: Understanding eBPF Performance Overhead
+  topic: Systems performance
+  authors: C. Liu, Z. Ren et al.
+  status: Submitted to EuroSys
+  description: A systematic measurement of eBPF performance overhead.
+- title: Phocus
+  subtitle: Picking Valuable Research from a Sea of Citations
+  topic: Research evaluation
+  authors: X. Zhang, Z. Ren et al.
+  status: Preprint · 2022
+  description: Using neural networks to assess citation importance and develop a research evaluation framework.
+  url: https://arxiv.org/abs/2201.02915
+  link_label: Read preprint

@@ -1,25 +1,129 @@
 ---
 layout: default
 title: Home
-navbar_title: Home
 ---
+{% assign profile = site.data.profile %}
+<div class="page-grid">
+  <aside class="identity" aria-label="Profile and navigation">
+    <div class="identity-heading">
+      <p class="eyebrow">Researcher &amp; builder</p>
+      <h1>{{ profile.name }}</h1>
+      <p class="chinese-name" lang="zh-Hans">{{ profile.chinese_name }}</p>
+    </div>
+    <p class="role">{{ profile.role }}<br><span>{{ profile.institution }}</span></p>
+    <nav class="section-nav" aria-label="On this page">
+      <a href="#about" aria-current="location"><span class="nav-number">01</span> About <span class="nav-arrow" aria-hidden="true">↗</span></a>
+      <a href="#research"><span class="nav-number">02</span> Research <span class="nav-arrow" aria-hidden="true">↗</span></a>
+      <a href="#projects"><span class="nav-number">03</span> Selected code <span class="nav-arrow" aria-hidden="true">↗</span></a>
+      <a href="#experience"><span class="nav-number">04</span> Experience <span class="nav-arrow" aria-hidden="true">↗</span></a>
+      <a href="#education"><span class="nav-number">05</span> Education <span class="nav-arrow" aria-hidden="true">↗</span></a>
+      <a href="#beyond"><span class="nav-number">06</span> Beyond research <span class="nav-arrow" aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="profile-links">
+      <a href="mailto:{{ profile.email }}">Email <span aria-hidden="true">↗</span></a>
+      <a href="{{ profile.github }}">GitHub <span aria-hidden="true">↗</span></a>
+      <a href="{{ profile.cv | relative_url }}">CV <span class="link-note">EN · PDF</span> <span aria-hidden="true">↗</span></a>
+      <a href="{{ profile.cv_zh | relative_url }}" lang="zh-Hans">简历 <span class="link-note">中文 · PDF</span> <span aria-hidden="true">↗</span></a>
+    </div>
+    <p class="location">Tsinghua University · Beijing</p>
+  </aside>
 
-{% include widgets/profile_card.html %}
+  <main id="main" class="content" tabindex="-1">
+    <section id="about" class="intro" aria-labelledby="about-title">
+      <div class="section-label"><span>01 / About</span><span aria-hidden="true">↘</span></div>
+      <h2 id="about-title">{{ profile.intro }}</h2>
+      <p>{{ profile.bio }}</p>
+      <p>{{ profile.current }}</p>
+      <ul class="interests" aria-label="Research interests">
+        <li>Systems security</li><li>Container isolation</li><li>eBPF &amp; performance</li><li>AI agent security</li>
+      </ul>
+    </section>
 
-{% if site.data.display.homepage.show_experience %}
-    {% include widgets/experience_card.html %}
-{% endif %}
+    <section id="research" class="section" aria-labelledby="research-title">
+      <div class="section-label"><h2 id="research-title">02 / Research</h2><span>Selected work</span></div>
+      {% for work in site.data.research %}
+      <article class="research-entry">
+        <p class="entry-topic">{{ work.topic }}</p>
+        <h3>{% if work.url %}<a href="{{ work.url }}">{{ work.title }} <span class="outbound" aria-hidden="true">↗</span></a>{% else %}{{ work.title }}{% endif %}</h3>
+        {% if work.subtitle %}<p class="subtitle">{{ work.subtitle }}</p>{% endif %}
+        <p class="description">{{ work.description }}</p>
+        <div class="entry-meta">
+          {% if work.authors %}<span>{{ work.authors }}</span>{% endif %}
+          <span class="status{% if work.status == 'Ongoing' %} ongoing{% endif %}">{{ work.status }}</span>
+          {% if work.url %}<a href="{{ work.url }}">{{ work.link_label }} <span aria-hidden="true">↗</span></a>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+      <details class="earlier-work">
+        <summary>Earlier research <span aria-hidden="true">+</span></summary>
+        <div>
+          <p><strong>Intelligent Technology and Systems Lab, Tsinghua</strong><br>User click models and reinforcement learning for ranking tasks, advised by Professor Yiqun Liu. <span class="muted">Sep. 2022 — Mar. 2023.</span></p>
+          <p><strong>Institute of HCI and Media Integration, Tsinghua</strong><br>Citation importance and research evaluation, advised by Professor Jiangtao Wen. <span class="muted">Sep. 2021 — Jun. 2022.</span></p>
+        </div>
+      </details>
+    </section>
 
-{% if site.data.display.homepage.show_news %}
-    {% assign count_news = site.news | size %}
-    {% if count_news > 0 %}
-        {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
-    {% endif %}
-{% endif %}
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="section-label"><h2 id="projects-title">03 / Selected code</h2><a href="{{ profile.github }}?tab=repositories">All repositories <span aria-hidden="true">↗</span></a></div>
+      <p class="section-intro">A few things I've built, from research experiments to databases and games.</p>
+      <div class="project-grid">
+        {% for project in site.data.projects %}
+        <a class="project" href="{{ project.url }}">
+          <h3>{{ project.name }} <span class="outbound" aria-hidden="true">↗</span></h3>
+          <p>{{ project.description }}</p>
+          <div class="project-meta"><span>{{ project.language }}</span>{% if project.archived %}<span>Archived</span>{% endif %}</div>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
 
-{% if site.data.display.homepage.show_selected_publications %}
-    {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
-    {% if pubs.size > 0 %}
-        {% include widgets/publication_card.html publications=pubs title='<i class="fas fa-star"></i> Selected Publications' %}
-    {% endif %}
-{% endif %}
+    <section id="experience" class="section" aria-labelledby="experience-title">
+      <div class="section-label"><h2 id="experience-title">04 / Experience</h2><span>Research &amp; industry</span></div>
+      <article class="timeline-entry">
+        <p class="entry-date">Apr. 2023 — Present</p>
+        <h3>Network and System Reliability<br class="desktop-break"> and Security Lab</h3>
+        <p class="subtitle">Tsinghua University · Advisor: Assoc. Prof. Long Wang</p>
+        <p class="description">Research on container escape detection, root cause analysis, eBPF overhead, and security isolation for AI agents.</p>
+      </article>
+      {% for item in site.data.experience %}
+      <article class="timeline-entry">
+        <p class="entry-date">{{ item.dates }}</p>
+        <h3>{{ item.organization }}</h3>
+        <p class="subtitle">{{ item.role }}</p>
+        <p class="description">{{ item.description }}</p>
+      </article>
+      {% endfor %}
+    </section>
+
+    <section id="education" class="section" aria-labelledby="education-title">
+      <div class="section-label"><h2 id="education-title">05 / Education</h2><span>Tsinghua University</span></div>
+      <article class="timeline-entry">
+        <p class="entry-date">2024 — 2029 <span class="muted">(expected)</span></p>
+        <h3>Ph.D. in Cyberspace Security</h3>
+        <p class="description">{{ profile.department }}<br>GPA: 4.0 / 4.0</p>
+      </article>
+      <article class="timeline-entry">
+        <p class="entry-date">2020 — 2024</p>
+        <h3>B.Eng. in Computer Science and Technology</h3>
+        <p class="description">Department of Computer Science and Technology<br>GPA: 3.8 / 4.0</p>
+        <p class="description">Tsinghua University Scholarship for Excellence in Science and Technology Innovation.</p>
+      </article>
+    </section>
+
+    <section id="beyond" class="section" aria-labelledby="beyond-title">
+      <div class="section-label"><h2 id="beyond-title">06 / Beyond research</h2><span>Teaching &amp; snow</span></div>
+      <p class="beyond-intro">In the classroom, and on the slopes.</p>
+      <div class="service-row"><div><h3>Teaching assistant</h3><p>Undergraduate Compilers Course, Tsinghua</p></div><span>2024 — Present</span></div>
+      <div class="service-row"><div><h3>Captain</h3><p>Tsinghua University Ski Team</p></div><span>2025 — 2026</span></div>
+      <div class="service-row"><div><h3>President</h3><p>Tsinghua University Student Ski Association</p></div><span>2023 — 2024</span></div>
+      <div class="toolbox"><h3>Tools I work with</h3><p>C / C++ · Python · Rust · LLVM · eBPF · perf · Docker · PyTorch</p></div>
+    </section>
+
+    <section class="contact" aria-labelledby="contact-title">
+      <p class="eyebrow">Keep in touch</p>
+      <h2 id="contact-title">Let's compare notes.</h2>
+      <p>On systems, security, or an interesting idea.</p>
+      <a href="mailto:{{ profile.email }}">{{ profile.email }} <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+</div>
