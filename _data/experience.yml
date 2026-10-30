@@ -1,7 +1,7 @@
 - organization: Shanghai SiOrigin Technology
   role: Compiler engineering intern
   dates: Sep. 2025 — May 2026
-  description: RISC-V compiler development and performance optimization. Implemented the translation pipeline for 1,000+ custom instructions, developed hardware-aware optimizations, and reduced compilation time by nearly 20%.
+  description: RISC-V compiler development and performance optimization. Implemented the translation pipeline for 1,000+ custom instructions, and developed multiple hardware-aware optimizations.
 - organization: Shanghai Zhizhenjunzhi Technology
   role: Network protocol research intern
   dates: Jun. — Jul. 2023
