@@ -9,13 +9,3 @@
   description: A SQL database course project with an ANTLR-based parser and a command-line interface.
   url: https://github.com/RenZihou/sqldb
   archived: true
-- name: ArmyChess
-  language: C++ / Qt 6
-  description: A desktop implementation of the Army Chess board game.
-  url: https://github.com/RenZihou/ArmyChess
-  archived: true
-- name: PinYin
-  language: Python
-  description: A character-based Pinyin input method, built for an introductory AI course.
-  url: https://github.com/RenZihou/PinYin
-  archived: true

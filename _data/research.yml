@@ -1,23 +1,27 @@
-- title: Security isolation for AI agents
+- title: REALM
+  subtitle: Identifying Minimal Task Assets for LLM Agents
   topic: Agent security
-  status: Ongoing
-  description: Defining task-specific boundaries around the assets an AI agent can access, bringing systems isolation principles to agent workflows.
+  authors: Z. Ren et al.
+  status: Preprint · 2026
+  description: Identifying the minimal assets an AI agent needs for a user task, addressing overly broad container permissions and resisting malicious instruction injection.
+  url: https://arxiv.org/abs/2610.39155
+  link_label: Read preprint
 - title: CAGEGuard
   subtitle: "No Touching Others' Assets: Detecting Container Escapes via CAGEGuard"
   topic: Container security · eBPF
   authors: Z. Ren et al.
-  status: Submitted to USENIX Security
+  status: Under peer reviews
   description: Modeling container boundaries through asset ownership and detecting escapes with eBPF. Achieved a 90% detection rate with low false positives and overhead.
 - title: RootSeeker
   subtitle: "Evidence-Guided Root Cause Analysis for Container Escapes"
   topic: Container security · Root cause analysis
   authors: Z. Ren et al.
-  status: Submitted to Journal of Software
+  status: Under peer reviews
   description: Combining self-correction with agent-oriented log and code search to locate the source of container escapes. Achieved 48% end-to-end function-level accuracy.
 - title: Understanding eBPF Performance Overhead
   topic: Systems performance
   authors: C. Liu, Z. Ren et al.
-  status: Submitted to EuroSys
+  status: Under peer reviews
   description: A systematic measurement of eBPF performance overhead.
 - title: Phocus
   subtitle: Picking Valuable Research from a Sea of Citations

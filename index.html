@@ -6,11 +6,17 @@ title: Home
 <div class="page-grid">
   <aside class="identity" aria-label="Profile and navigation">
     <div class="identity-heading">
-      <p class="eyebrow">Researcher &amp; builder</p>
+      <p class="eyebrow">Researcher</p>
       <h1>{{ profile.name }}</h1>
       <p class="chinese-name" lang="zh-Hans">{{ profile.chinese_name }}</p>
     </div>
-    <p class="role">{{ profile.role }}<br><span>{{ profile.institution }}</span></p>
+    <p class="role">{{ profile.role }}<br><span>{{ profile.institution }} · Beijing</span></p>
+    <div class="profile-links">
+      <a href="mailto:{{ profile.email }}">Email <span aria-hidden="true">↗</span></a>
+      <a href="{{ profile.github }}">GitHub <span aria-hidden="true">↗</span></a>
+      <a href="{{ profile.cv | relative_url }}">CV <span class="link-note">EN · PDF</span> <span aria-hidden="true">↗</span></a>
+      <a href="{{ profile.cv_zh | relative_url }}" lang="zh-Hans">简历 <span class="link-note">中文 · PDF</span> <span aria-hidden="true">↗</span></a>
+    </div>
     <nav class="section-nav" aria-label="On this page">
       <a href="#about" aria-current="location"><span class="nav-number">01</span> About <span class="nav-arrow" aria-hidden="true">↗</span></a>
       <a href="#research"><span class="nav-number">02</span> Research <span class="nav-arrow" aria-hidden="true">↗</span></a>
@@ -19,13 +25,6 @@ title: Home
       <a href="#education"><span class="nav-number">05</span> Education <span class="nav-arrow" aria-hidden="true">↗</span></a>
       <a href="#beyond"><span class="nav-number">06</span> Beyond research <span class="nav-arrow" aria-hidden="true">↗</span></a>
     </nav>
-    <div class="profile-links">
-      <a href="mailto:{{ profile.email }}">Email <span aria-hidden="true">↗</span></a>
-      <a href="{{ profile.github }}">GitHub <span aria-hidden="true">↗</span></a>
-      <a href="{{ profile.cv | relative_url }}">CV <span class="link-note">EN · PDF</span> <span aria-hidden="true">↗</span></a>
-      <a href="{{ profile.cv_zh | relative_url }}" lang="zh-Hans">简历 <span class="link-note">中文 · PDF</span> <span aria-hidden="true">↗</span></a>
-    </div>
-    <p class="location">Tsinghua University · Beijing</p>
   </aside>
 
   <main id="main" class="content" tabindex="-1">
@@ -65,7 +64,7 @@ title: Home
 
     <section id="projects" class="section" aria-labelledby="projects-title">
       <div class="section-label"><h2 id="projects-title">03 / Selected code</h2><a href="{{ profile.github }}?tab=repositories">All repositories <span aria-hidden="true">↗</span></a></div>
-      <p class="section-intro">A few things I've built, from research experiments to databases and games.</p>
+      <p class="section-intro">A few things I've built, from research experiments to databases.</p>
       <div class="project-grid">
         {% for project in site.data.projects %}
         <a class="project" href="{{ project.url }}">
@@ -124,6 +123,7 @@ title: Home
       <h2 id="contact-title">Let's compare notes.</h2>
       <p>On systems, security, or an interesting idea.</p>
       <a href="mailto:{{ profile.email }}">{{ profile.email }} <span aria-hidden="true">↗</span></a>
+      <a href="mailto:{{ profile.institution_email }}">{{ profile.institution_email }} <span aria-hidden="true">↗</span></a>
     </section>
   </main>
 </div>
